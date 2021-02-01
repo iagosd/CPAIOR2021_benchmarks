@@ -218,6 +218,10 @@
        (=> a!2 a!3)
        (=> a!4 (= door_cost a!5)))))
 	   
+;; TODO replace with values to test
+(assert (= shaft_w 1500))
+(assert (= shaft_d 1500))
+
 ;; Minimization
 (minimize (let ((a!1 (* type_door (- (+ x_car w_car) (+ x_cd axL_cd (div opening 2))))))
   (+ cf_cost
@@ -225,6 +229,6 @@
      a!1
      (- w_car opening)
      h_cf
-     ;(+ F1_x F1_y)
+     (+ F1_x F1_y) ;; --- COMMENT THIS LINE FOR MULTI-OBJECTIVE OPTIMIZATION
   )))
-(minimize (+ F1_x F1_y))
+;;(minimize (+ F1_x F1_y)) ;; --- DECOMMENT THIS LINE FOR MULTI-OBJECTIVE OPTIMIZATION

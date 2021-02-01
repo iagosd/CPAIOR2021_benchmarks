@@ -3206,6 +3206,7 @@
 				 (>= (- y_cd 30) (+ y_cf (select clamps_d DP_idx) (select clamps_s DP_idx))))
 			 a!1)))
 
+;; Cost function contributions
 (assert (let ((a!1 (- (- (+ y_cf (select cr_d_cf CF_idx)) y_car)
               (- (+ y_car d_car (select cr_d_cf CF_idx)) (+ y_cf (select d_cf CF_idx)))))
       (a!2 (>= (- (+ x_car (div w_car 2)) (+ x_cd (select axL_cd DP_idx))) 0))
@@ -3216,6 +3217,15 @@
        (=> (< a!1 0) (= cf_cost (* (- 1) a!1)))
        (=> a!2 a!3)
        (=> a!4 (= door_cost a!5)))))
-(minimize (let ((a!1 (* (select type_door DP_idx) (- (+ x_car w_car) (+ x_cd (select axL_cd DP_idx) (div (select opening DP_idx) 2))))))
-  (+ cf_cost (* (- 1 (select type_door DP_idx)) door_cost) a!1 (select opening DP_idx) (select d_cf CF_idx))))
 
+;; TODO replace with values to test
+(assert (= shaft_w 1500))
+(assert (= shaft_d 1500))
+
+;; Minimization
+(minimize (let ((a!1 (* (select type_door DP_idx) (- (+ x_car w_car) (+ x_cd (select axL_cd DP_idx) (div (select opening DP_idx) 2))))))
+  (+ cf_cost 
+	(* (- 1 (select type_door DP_idx)) door_cost) 
+	a!1 
+	(- w_car (select opening DP_idx))
+	(select d_cf CF_idx))))
