@@ -2,7 +2,7 @@
 
 ## Open access benchmarks
 
-In order to replicate our experiments you need to manually update the shaft values.
+In order to replicate our experiments you need to manually update the shaft values.</br>
 <b>For OMT files:</b>
 <ul>
 	<li>The <i>shaft_w</i> and <i>shaft_d</i> assertion values are at the end of the file, just before minimization</li>
