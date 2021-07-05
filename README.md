@@ -1,4 +1,4 @@
-# CP 2021 submission number ?
+# AIxIA 2021
 
 ## Open access benchmarks
 
